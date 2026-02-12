@@ -10,7 +10,13 @@ import se.lexicon.service.ShippingCostCalculator;
 public class ExpressInternationalShipping implements ShippingCostCalculator {
 
     public boolean supports(ShippingRequest r) {
-        return r.destination() == Destination.INTERNATIONAL && r.speed() == Speed.EXPRESS;
+
+        if (r.destination() == Destination.INTERNATIONAL && r.speed() == Speed.EXPRESS) {
+            return true;
+        }
+        else {
+            return r.destination() == Destination.INTERNATIONAL && r.speed() == Speed.STANDARD;
+        }
     }
 
     public double calculate(ShippingRequest r) {

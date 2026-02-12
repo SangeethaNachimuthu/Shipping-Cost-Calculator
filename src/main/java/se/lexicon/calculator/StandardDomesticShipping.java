@@ -9,7 +9,11 @@ import se.lexicon.service.ShippingCostCalculator;
 @Component
 public class StandardDomesticShipping implements ShippingCostCalculator {
     public boolean supports(ShippingRequest r) {
-        return r.destination() == Destination.DOMESTIC && r.speed() == Speed.STANDARD;
+        if (r.destination() == Destination.DOMESTIC && r.speed() == Speed.STANDARD) {
+            return true;
+        } else {
+            return r.destination() == Destination.DOMESTIC && r.speed() == Speed.EXPRESS;
+        }
     }
 
     public double calculate(ShippingRequest r) {
