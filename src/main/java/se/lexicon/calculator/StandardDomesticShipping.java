@@ -1,5 +1,6 @@
 package se.lexicon.calculator;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 import se.lexicon.model.Destination;
 import se.lexicon.model.ShippingRequest;
@@ -8,6 +9,12 @@ import se.lexicon.service.ShippingCostCalculator;
 
 @Component
 public class StandardDomesticShipping implements ShippingCostCalculator {
+
+    @PostConstruct
+    public void run() {
+        IO.println("StandardDomesticShipping been created.");
+    }
+
     public boolean supports(ShippingRequest r) {
         if (r.destination() == Destination.DOMESTIC && r.speed() == Speed.STANDARD) {
             return true;
