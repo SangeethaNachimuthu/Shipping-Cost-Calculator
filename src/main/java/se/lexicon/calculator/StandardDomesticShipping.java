@@ -1,6 +1,7 @@
 package se.lexicon.calculator;
 
 import jakarta.annotation.PostConstruct;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import se.lexicon.config.ShippingCostConfig;
 import se.lexicon.model.Destination;
@@ -9,6 +10,7 @@ import se.lexicon.model.Speed;
 import se.lexicon.service.ShippingCostCalculator;
 
 @Component
+@Profile("dev")
 public class StandardDomesticShipping implements ShippingCostCalculator {
 
     private final ShippingCostConfig costConfig;
